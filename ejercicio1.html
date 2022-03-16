@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+    <div>
+        <div style="width: 40%;margin: 0 auto">
+            <h2>
+                Escríbenos !!!
+            </h2>
+            <div class="resultado" style="color:green;font-style: italic">
+            </div>
+            <form id="formulario">
+                <div>
+                    <div style="display: flex;flex-direction: column;">
+                        <label>
+                            Nombre completo
+                        </label>
+                        <input id="nombre" type="text">
+                        <p class="errorNombre" style="color:red;font-style: italic;"></p>
+                    </div>
+                    <div style="display: flex;flex-direction: column;">
+                        <label>
+                            Asunto
+                        </label>
+                        <input id="asunto" type="text">
+                        <p class="errorAsunto" style="color:red;font-style: italic;"></p>
+                    </div>
+                </div>
+                <div style="display: flex;flex-direction: column;">
+                    <label>
+                        Mensaje
+                    </label>
+                    <textarea id="mensaje"></textarea>
+                    <p class="errorMensaje" style="color:red;font-style: italic;"></p>
+                </div>
+                <div>
+                    <button id="botton" type="submit">
+                        Envíar mensaje
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        
+    let form = document.getElementById("formulario");
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault()
+
+        limpiarErrores();
+        
+        let textNombre  = document.getElementById("nombre").value;
+        let textAsunto  = document.getElementById("asunto").value;
+        let textMensaje = document.getElementById("mensaje").value;
+
+        let resultado = validar(textNombre, textAsunto, textMensaje);
+
+        if(resultado == true){
+            exito();
+        }
+
+    });
+
+  
+    function limpiarErrores(){
+        document.querySelector(".errorNombre").innerHTML = "";
+        document.querySelector(".errorAsunto").innerHTML = "";
+        document.querySelector(".errorMensaje").innerHTML = "";
+    }
+
+    
+    function exito(){
+        document.querySelector(".resultado").innerHTML = "Mensaje enviado con éxito!"
+    };
+
+
+    //Validar Datos
+    function validar(textNombre, textAsunto, textMensaje){
+        let okValidacion = true;
+        let expresion = /[a-zA-Z]/gim;
+
+        //Nombre
+        if(expresion.test(textNombre) == false){
+            document.querySelector(".errorNombre").innerHTML = "Ingrese solo caracteres alfabéticos";
+            okValidacion = false;
+        
+        }if(textNombre === " "){
+            document.querySelector(".errorNombre").innerHTML = "El nombre es requerido";
+
+        };
+
+        //Asunto
+        if(expresion.test(textAsunto) == false){
+            document.querySelector(".errorAsunto").innerHTML = "Ingres solo caracteres alfabéticos";
+            okValidacion = false;
+
+        }else if(textAsunto === ""){
+            document.querySelector(".errorNombre").innerHTML = "El asunto es requerido";
+        };
+
+        //mensaje
+        if(expresion.test(textMensaje) == false){
+            document.querySelector(".errorNombre").innerHTML = "Ingrese solo caracteres alfabéticos";
+            okValidacion = false;
+
+        }else if(textMensaje === ""){
+            document.querySelector(".errorNombre").innerHTML = "El asunto es requerido";
+        };
+
+        return okValidacion;
+    };
+
+
+        
+    
+    
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+    /* if(textNombre === ""){
+            errorNombre.innerHTML = "*El Nombre es requerido";
+            return false;
+        
+        }else if(textAsunto === ""){
+            errorAsunto.innerHTML = "*El asunto es requerido";
+            
+        
+        }else if(textMensaje === ""){
+            errorMensaje.innerHTML = "*El mensaje es requerido";
+        
+        }else if(!expresion.test(textNombre)){
+            alert(`Sólo caracteres alfabéticos`); */
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+        /* let form = document.getElementById("formulario");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault()
+
+            let textNombre  = document.getElementById("nombre").value;
+            let textAsunto  = document.getElementById("asunto").value;
+            let textMensaje = document.getElementById("mensaje").value;
+
+            let resultado = validar (textNombre, textTelefono, textEmail);
+
+            if(resultado == true){
+                exito();
+            }
+            
+        });
+            
+
+        function Errores(){
+            document.querySelector(".errorNombre").innerHTML = " ";
+            document.querySelector(".errorAsunto").innerHTML = " ";
+            document.querySelector(".errorMensaje").innerHTML = " ";
+            
+        };
+
+        function exito(){
+            alert("Formulario pasó la validación!")
+        };
+
+        function validar(){
+            let pasamosLaValidacion = true;
+            let validarNombre = /[a-zA-Z]/gim;
+            
+            if(textNombre.match(validarNombre){
+
+            })
+
+            
+        }; */
+    </script>
+</body>
+
+</html>
